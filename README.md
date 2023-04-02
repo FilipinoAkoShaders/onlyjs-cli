@@ -17,7 +17,10 @@ This CLI requires Node.js to be installed.
 4. Add to the path variable
 ```export PATH=$PATH:<path-to-onlyjs-cli-folder>```
 
-5. YOUR SET!
+5. Install all the modules needed
+```npm install fs path child_process commander util adm-zip```
+
+6.YOUR SET!
 
 # Usage
 ```
