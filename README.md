@@ -150,15 +150,64 @@ $import https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js
 - Variables
 ```js
 # access the android api
-let android = $Android
+let API = android || $Android || window.android
 # access the document body
 let body = $body
 # you can still access document by "document"
 ```
 
 # API
-## $Android.showToast("your text here") 
+- showToast(message: string): void
+Displays a short Toast message with the specified text.
 
+- getCurrentDateTime(format: string): string
+Returns the current date and time in the specified format.
+
+- setPreference(key: string, value: string): void
+Sets the value of a shared preference.
+
+- .getPreference(key: string, defaultValue: string): string
+Gets the value of a shared preference.
+
+- isNetworkConnected(): boolean
+Checks if the device is connected to the network.
+
+- getDeviceInfo(): string
+Returns information about the device.
+
+- closeApp(): void
+Closes the current app.
+
+- saveFile(fileName: string, fileContent: string): void
+Saves a file with the specified name and content to the app's internal storage.
+
+- readFile(fileName: string): string
+Reads the contents of a file with the specified name from the app's internal storage.
+
+- deleteFile(fileName: string): void
+Deletes a file with the specified name from the app's internal storage.
+
+
+Note: Some methods are commented out in the code, and not included in this documentation. These methods include database related functionalities.
+
+
+- example usage
+```js
+const API = android || $Android || window.android
+
+var currentDateTime = API.getCurrentDateTime("yyyy-MM-dd HH:mm:ss");
+API.showToast("Hello, world!");
+API.setPreference("myKey", "myValue");
+var myValue = API.getPreference("myKey", "defaultValue");
+var isNetworkConnected = API.isNetworkConnected();
+var deviceInfo = API.getDeviceInfo();
+API.closeApp();
+API.saveFile("myFile.txt", "Hello, file!");
+var fileContent = API.readFile("myFile.txt");
+API.deleteFile("myFile.txt");
+```
+
+Note: JavaScript running in OnlyJS system can potentially access sensitive information and execute malicious code. Carefully review and test any code that interacts with native features, and use appropriate security measures.
 
 # License
 This project is licensed under the MIT License.
