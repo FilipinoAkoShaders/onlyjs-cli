@@ -13,7 +13,7 @@ Added assets! `onlyjs assets`, use `onlyjs help assets` for info.
 
 # Installation
 1. Download a zip
-```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.1.zip?raw=true```
+```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.2.zip?raw=true```
 
 2. Make a folder named "onlyjs-cli"
 ```mkdir onlyjs-cli```
