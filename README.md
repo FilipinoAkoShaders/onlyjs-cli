@@ -6,7 +6,7 @@ This CLI requires Node.js to be installed.
 
 # Installation
 1. Download a zip
-```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.1.zip?raw=true```
+```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.2.zip?raw=true```
 
 2. Make a folder named "onlyjs-cli"
 ```mkdir onlyjs-cli```
@@ -103,7 +103,7 @@ Options:
 
 Change the main code of your project.
 ```
-Usage: index code <codeFile> [options]
+Usage: onlyjs code <codeFile> [options]
 
 the main code of your app!
 
@@ -118,7 +118,7 @@ Options:
 
 Publish you project.
 ```
-Usage: index publish [options]
+Usage: onlyjs publish [options]
 
 publish your app!
 
@@ -143,7 +143,7 @@ $import <url>
 
 # this is how you import a file 
 # example
-$import https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js
+$import "https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"
 
 # you can now access jQuery on your file!
 ```
