@@ -4,6 +4,13 @@ A command-line interface to create Android apps or games using only one JavaScri
 # Requirements
 This CLI requires Node.js to be installed.
 
+# Changelog
+- V0.1
+First Release.
+
+- V0.2
+Added assets! `onlyjs assets`, use `onlyjs help assets` for info.
+
 # Installation
 1. Download a zip
 ```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.1.zip?raw=true```
