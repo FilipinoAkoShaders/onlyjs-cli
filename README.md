@@ -23,6 +23,8 @@ export ONLYJS=$PWD
 export PATH=$PATH:$ONLYJS
 
 cd ..
+
+chmod +x $ONLYJS/onlyjs
 ```
 
 5. Install all the modules needed
