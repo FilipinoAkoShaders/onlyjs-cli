@@ -11,6 +11,10 @@ First Release.
 - V0.2
 Added assets! `onlyjs assets`, use `onlyjs help assets` for info.
 
+
+To use your asset file
+```file:///android_asset/<your file path>```
+
 # Installation
 1. Download a zip
 ```wget -O cli.zip https://github.com/FilipinoAkoShaders/onlyjs-cli/blob/main/onlyjs-cli-v0.2.zip?raw=true```
