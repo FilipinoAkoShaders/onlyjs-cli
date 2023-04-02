@@ -9,7 +9,7 @@ This CLI requires Node.js to be installed.
 First Release.
 
 - V0.2
-Added assets! `onlyjs assets`, use `onlyjs help assets` for info.
+Added assets! `onlyjs addAssets`, use `onlyjs help addAssets` for info.
 
 
 To use your asset file
@@ -252,6 +252,9 @@ API.deleteFile("myFile.txt");
 ```
 
 Note: JavaScript running in OnlyJS system can potentially access sensitive information and execute malicious code. Carefully review and test any code that interacts with native features, and use appropriate security measures.
+
+
+Note: OnlyJS System is currently buggy. Please report an issue if you found an issue!
 
 # License
 This project is licensed under the MIT License.
