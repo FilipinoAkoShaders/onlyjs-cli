@@ -168,34 +168,54 @@ let body = $body
 ```
 
 # API
-- showToast(message: string): void
+- ***showToast(message: string): void***
+
+
 Displays a short Toast message with the specified text.
 
-- getCurrentDateTime(format: string): string
+- ***getCurrentDateTime(format: string): string***
+
+
 Returns the current date and time in the specified format.
 
-- setPreference(key: string, value: string): void
+- ***setPreference(key: string, value: string): void***
+
+
 Sets the value of a shared preference.
 
-- .getPreference(key: string, defaultValue: string): string
+- ***getPreference(key: string, defaultValue: string): string***
+
+
 Gets the value of a shared preference.
 
-- isNetworkConnected(): boolean
+- ***isNetworkConnected(): boolean***
+
+
 Checks if the device is connected to the network.
 
-- getDeviceInfo(): string
+- ***getDeviceInfo(): string***
+
+
 Returns information about the device.
 
-- closeApp(): void
+- ***closeApp(): void***
+
+
 Closes the current app.
 
-- saveFile(fileName: string, fileContent: string): void
+- ***saveFile(fileName: string, fileContent: string): void***
+
+
 Saves a file with the specified name and content to the app's internal storage.
 
-- readFile(fileName: string): string
+- ***readFile(fileName: string): string***
+
+
 Reads the contents of a file with the specified name from the app's internal storage.
 
-- deleteFile(fileName: string): void
+- ***deleteFile(fileName: string): void***
+
+
 Deletes a file with the specified name from the app's internal storage.
 
 
