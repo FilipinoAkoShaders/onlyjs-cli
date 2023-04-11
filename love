@@ -1,0 +1,87 @@
+#!/bin/bash
+
+set -e
+
+echo -e "\033[0;35m""LOVE PROJECT EXPORT TO APK""\033[0m"
+
+echo -e "\033[1;34m""Setting Variables...""\033[0m"
+GAME="$@"
+PJS="$LOVEPJS"
+TEMPLATE="$BUILDDIR"
+CACHE="$PJS/app"
+IMAGE_EXTENSIONS=("jpg" "jpeg" "png")
+LIGHT_GREEN="\033[1;32m"
+LIGHT_BLUE="\033[1;34m"
+RED="\033[0;31m"
+RS="\033[0m"
+ICONSDRAWABLE=("/res/drawable-hdpi/love.png" "/res/drawable-mdpi/love.png" "/res/drawable-xhdpi/love.png" "/res/drawable-xxhdpi/love.png" "/res/drawable-xxxhdpi/icon.png")
+echo -e $LIGHT_GREEN"Variables √"$RS
+
+echo -e "${LIGHT_BLUE}Game Validity...${RS}"
+if [ ! -f "$GAME" ]; then
+  echo "game.love is invalid!"
+  exit 1
+fi
+echo -e "${LIGHT_GREEN}Game Valid √${RS}"
+
+echo -e $LIGHT_BLUE"Build Utils..."$RS
+check_image_file() {
+  file_path="$1"
+  file_extension="${file_path##*.}"
+
+  if [ ! -e "$file_path" ]; then
+    echo -e $RED"File does not exist: $file_path"$RS
+    return 1
+  fi
+
+  if [[ " ${IMAGE_EXTENSIONS[@]} " =~ " ${file_extension} " ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+echo -e $LIGHT_GREEN"Utils √"$RS
+
+echo -e $LIGHT_BLUE"Configuration..."$RS
+read -p "App Name: " NAME
+read -p "App Version Code: " VERCODE
+read -p "App Version Name: " VERNAME
+read -p "App Package: " PACKAGE
+read -p "App Icon Path: " ICONPTH
+eval ICONPTH="$ICONPTH"
+eval NAME="$NAME"
+eval VERCODE="$VERCODE"
+eval VERNAME="$VERNAME"
+eval PACKAGE="$PACKAGE"
+echo -e $LIGHT_GREEN"Configuration √"$RS
+
+echo -e $LIGHT_BLUE"App Project Setup..."$RS
+[ -d "$CACHE" ] && rm -r "$CACHE"
+cp -R $TEMPLATE $PJS
+cp "${GAME}" "$CACHE"/assets/game.love
+sed -i "s/APPNAME/$NAME/gi" "$CACHE"/AndroidManifest.xml
+sed -i "s/APPPACKAGE/$PACKAGE/gi" "$CACHE"/AndroidManifest.xml
+sed -i "s/APPVERCODE/$VERCODE/gi" "$CACHE"/AndroidManifest.xml
+sed -i "s/APPVERNAME/$VERNAME/gi" "$CACHE"/AndroidManifest.xml
+if check_image_file "$ICONPTH"; then
+  for pth in "${ICONSDRAWABLE[@]}"; do
+    HHH="$CACHE$pth"
+    cp -R "$ICONPTH" "$HHH"
+  done
+else
+  echo -e $RED"Icon is invalid."$RS
+fi
+echo -e $LIGHT_GREEN"App Project √"$RS
+
+echo -e $LIGHT_BLUE"App Building And Signing..."$RS
+[ -f "$PJS/$NAME.apk" ] && rm "$PJS/$NAME.apk"
+apktool b "$CACHE" -o "$PJS/$NAME.apk"
+java -jar ~/uber*.jar -a "$PJS/$NAME.apk"
+echo -e $LIGHT_GREEN"Build complete."$RS
+
+echo -e $LIGHT_BLUE"Exporting..."$RS
+rm -r "$CACHE"
+rm -r "$PJS/$NAME.apk"
+mv $PJS/"$NAME"-aligned*.apk $PJS/"$NAME"-output.apk
+mv $PJS/"$NAME"-aligned*.idsig $PJS/"$NAME"-output.apk.idsig
+echo -e $LIGHT_GREEN"Love2D Game Successfully Exported To Apk $PJS/$NAME-output.apk"$RS
