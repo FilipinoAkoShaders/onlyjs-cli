@@ -76,7 +76,7 @@ echo -e $LIGHT_GREEN"App Project √"$RS
 echo -e $LIGHT_BLUE"App Building And Signing..."$RS
 [ -f "$PJS/$NAME.apk" ] && rm "$PJS/$NAME.apk"
 apktool b "$CACHE" -o "$PJS/$NAME.apk"
-java -jar ~/uber*.jar -a "$PJS/$NAME.apk"
+java -jar "$LOVE_HOME"/uber*.jar -a "$PJS/$NAME.apk"
 echo -e $LIGHT_GREEN"Build complete."$RS
 
 echo -e $LIGHT_BLUE"Exporting..."$RS
